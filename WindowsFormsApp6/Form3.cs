@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -105,6 +106,22 @@ namespace WindowsFormsApp6
                 button1.Hide();
                 panel1.Hide();
                 label1.Hide();
+                
+                
+                string path = @"C:\Users\Asus\RiderProjects\test2\scores.txt"; 
+                
+                using (StreamWriter writer = new StreamWriter(path, true))
+                {
+                    writer.WriteLine($"{Global.getLogin()}:\t{sum}");
+                }
+
+                
+                // вызываем главную форму, которая открыла текущую, главная форма всегда = 0 - [0]
+                Form form1 = Application.OpenForms[2];
+                form1.StartPosition = FormStartPosition.Manual; // меняем параметр StartPosition у Form1, иначе она будет использовать тот, который у неё прописан в настройках и всегда будет открываться по центру экрана
+                form1.Left = this.Left; // задаём открываемой форме позицию слева равную позиции текущей формы
+                form1.Top = this.Top; // задаём открываемой форме позицию сверху равную позиции текущей формы
+                form1.Show(); // отображаем Form1
             }
 
             if (globalC == lengthOfQuestionList - 1)
@@ -159,7 +176,7 @@ namespace WindowsFormsApp6
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
             // вызываем главную форму, которая открыла текущую, главная форма всегда = 0 - [0]
-            Form form1 = Application.OpenForms[0];
+            Form form1 = Application.OpenForms[2];
             form1.StartPosition = FormStartPosition.Manual; // меняем параметр StartPosition у Form1, иначе она будет использовать тот, который у неё прописан в настройках и всегда будет открываться по центру экрана
             form1.Left = this.Left; // задаём открываемой форме позицию слева равную позиции текущей формы
             form1.Top = this.Top; // задаём открываемой форме позицию сверху равную позиции текущей формы
@@ -168,7 +185,12 @@ namespace WindowsFormsApp6
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Close();
+            // вызываем главную форму, которая открыла текущую, главная форма всегда = 0 - [0]
+            Form form1 = Application.OpenForms[2];
+            form1.StartPosition = FormStartPosition.Manual; // меняем параметр StartPosition у Form1, иначе она будет использовать тот, который у неё прописан в настройках и всегда будет открываться по центру экрана
+            form1.Left = this.Left; // задаём открываемой форме позицию слева равную позиции текущей формы
+            form1.Top = this.Top; // задаём открываемой форме позицию сверху равную позиции текущей формы
+            form1.Show(); // отображаем Form1
         }
     }
 }

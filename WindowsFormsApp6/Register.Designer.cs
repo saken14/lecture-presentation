@@ -33,16 +33,17 @@ namespace WindowsFormsApp6
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.loginBox = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.passBox = new System.Windows.Forms.TextBox();
+            this.nameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.lastNameBox = new System.Windows.Forms.TextBox();
             this.buttonRegister = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
+            this.titleLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox3)).BeginInit();
@@ -58,15 +59,15 @@ namespace WindowsFormsApp6
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // loginBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.textBox1.Location = new System.Drawing.Point(388, 189);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(453, 53);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.loginBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.loginBox.Location = new System.Drawing.Point(388, 189);
+            this.loginBox.Multiline = true;
+            this.loginBox.Name = "loginBox";
+            this.loginBox.Size = new System.Drawing.Size(453, 53);
+            this.loginBox.TabIndex = 2;
+            this.loginBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox2
             // 
@@ -90,25 +91,25 @@ namespace WindowsFormsApp6
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
-            // textBox2
+            // passBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.textBox2.Location = new System.Drawing.Point(388, 297);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(453, 41);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.passBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.passBox.Location = new System.Drawing.Point(388, 297);
+            this.passBox.Name = "passBox";
+            this.passBox.Size = new System.Drawing.Size(453, 41);
+            this.passBox.TabIndex = 4;
+            this.passBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.passBox.UseSystemPasswordChar = true;
             // 
-            // textBox3
+            // nameBox
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.textBox3.Location = new System.Drawing.Point(388, 377);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(453, 53);
-            this.textBox3.TabIndex = 6;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.nameBox.Location = new System.Drawing.Point(388, 377);
+            this.nameBox.Multiline = true;
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(453, 53);
+            this.nameBox.TabIndex = 6;
+            this.nameBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -132,15 +133,15 @@ namespace WindowsFormsApp6
             this.label2.Text = "Фамиля";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox4
+            // lastNameBox
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.textBox4.Location = new System.Drawing.Point(388, 473);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(453, 53);
-            this.textBox4.TabIndex = 8;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lastNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.lastNameBox.Location = new System.Drawing.Point(388, 473);
+            this.lastNameBox.Multiline = true;
+            this.lastNameBox.Name = "lastNameBox";
+            this.lastNameBox.Size = new System.Drawing.Size(453, 53);
+            this.lastNameBox.TabIndex = 8;
+            this.lastNameBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonRegister
             // 
@@ -155,7 +156,7 @@ namespace WindowsFormsApp6
             // 
             // buttonBack
             // 
-            this.buttonBack.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.buttonBack.BackColor = System.Drawing.SystemColors.HighlightText;
             this.buttonBack.Location = new System.Drawing.Point(47, 64);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(129, 56);
@@ -164,21 +165,33 @@ namespace WindowsFormsApp6
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
+            // titleLabel
+            // 
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.titleLabel.ForeColor = System.Drawing.Color.Black;
+            this.titleLabel.Location = new System.Drawing.Point(388, 26);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(496, 108);
+            this.titleLabel.TabIndex = 12;
+            this.titleLabel.Text = "Регистрация";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1282, 803);
+            this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.lastNameBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.nameBox);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.passBox);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.loginBox);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -191,21 +204,23 @@ namespace WindowsFormsApp6
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.Label titleLabel;
+
         private System.Windows.Forms.Button buttonBack;
 
         private System.Windows.Forms.Button buttonRegister;
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox lastNameBox;
 
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox passBox;
+        private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.PictureBox pictureBox2;
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox loginBox;
 
         private System.Windows.Forms.PictureBox pictureBox1;
 

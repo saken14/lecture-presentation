@@ -12,5 +12,5 @@ C:\Users\Asus\RiderProjects\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsF
 C:\Users\Asus\RiderProjects\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.Form2.resources
 C:\Users\Asus\RiderProjects\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.Form3.resources
 C:\Users\Asus\RiderProjects\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.welcome.resources
-C:\Users\Asus\RiderProjects\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.Login.resources
 C:\Users\Asus\RiderProjects\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.Register.resources
+C:\Users\Asus\RiderProjects\WindowsFormsApp6\WindowsFormsApp6\obj\Debug\WindowsFormsApp6.Login.resources

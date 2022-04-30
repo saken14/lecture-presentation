@@ -36,9 +36,10 @@ namespace WindowsFormsApp6
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.passBox = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.loginBox = new System.Windows.Forms.TextBox();
+            this.titleLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox2)).BeginInit();
@@ -74,6 +75,7 @@ namespace WindowsFormsApp6
             this.buttonLogin.TabIndex = 16;
             this.buttonLogin.Text = "Войти";
             this.buttonLogin.UseVisualStyleBackColor = false;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // pictureBox3
             // 
@@ -86,15 +88,15 @@ namespace WindowsFormsApp6
             this.pictureBox3.TabIndex = 15;
             this.pictureBox3.TabStop = false;
             // 
-            // textBox2
+            // passBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.textBox2.Location = new System.Drawing.Point(386, 388);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(453, 41);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.passBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.passBox.Location = new System.Drawing.Point(386, 388);
+            this.passBox.Name = "passBox";
+            this.passBox.Size = new System.Drawing.Size(453, 41);
+            this.passBox.TabIndex = 14;
+            this.passBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.passBox.UseSystemPasswordChar = true;
             // 
             // pictureBox2
             // 
@@ -107,27 +109,39 @@ namespace WindowsFormsApp6
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
-            // textBox1
+            // loginBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.textBox1.Location = new System.Drawing.Point(386, 280);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(453, 53);
-            this.textBox1.TabIndex = 12;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.loginBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.loginBox.Location = new System.Drawing.Point(386, 280);
+            this.loginBox.Multiline = true;
+            this.loginBox.Name = "loginBox";
+            this.loginBox.Size = new System.Drawing.Size(453, 53);
+            this.loginBox.TabIndex = 12;
+            this.loginBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.titleLabel.ForeColor = System.Drawing.Color.Black;
+            this.titleLabel.Location = new System.Drawing.Point(362, 42);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(496, 108);
+            this.titleLabel.TabIndex = 18;
+            this.titleLabel.Text = "Вход";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1282, 803);
+            this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.passBox);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.loginBox);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -140,13 +154,15 @@ namespace WindowsFormsApp6
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.Label titleLabel;
+
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox passBox;
         private System.Windows.Forms.PictureBox pictureBox2;
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox loginBox;
 
         private System.Windows.Forms.PictureBox pictureBox1;
 
