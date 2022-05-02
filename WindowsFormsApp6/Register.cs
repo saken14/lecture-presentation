@@ -6,7 +6,8 @@ namespace WindowsFormsApp6
 {
     public partial class Register : Form
     {
-        public Register()
+        private static Register instance;
+        private Register()
         {
             InitializeComponent();
             
@@ -25,20 +26,27 @@ namespace WindowsFormsApp6
             this.titleLabel.Parent = pictureBox1;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
         }
+        public static Register getInstance()
+        {
+            if (instance == null)
+                instance = new Register();
+            return instance;
+        }
         
         private void Register_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // вызываем главную форму, которая открыла текущую, главная форма всегда = 0 - [0]
-            Form welcome = Application.OpenForms[0];
-            welcome.StartPosition = FormStartPosition.Manual; // меняем параметр StartPosition у Form1, иначе она будет использовать тот, который у неё прописан в настройках и всегда будет открываться по центру экрана
-            welcome.Left = this.Left; // задаём открываемой форме позицию слева равную позиции текущей формы
-            welcome.Top = this.Top; // задаём открываемой форме позицию сверху равную позиции текущей формы
-            welcome.Show(); // отображаем Form1
+            Form welcome = Welcome.getInstance();
+            welcome.Close();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            Close();
+            Form welcome = Welcome.getInstance();
+            welcome.StartPosition = FormStartPosition.Manual; // меняем параметр StartPosition у Form1, иначе она будет использовать тот, который у неё прописан в настройках и всегда будет открываться по центру экрана
+            welcome.Left = this.Left; // задаём открываемой форме позицию слева равную позиции текущей формы
+            welcome.Top = this.Top; // задаём открываемой форме позицию сверху равную позиции текущей формы
+            welcome.Show(); // отображаем Form1
+            this.Hide(); // скрываем Form1 (this - текущая форма)
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
@@ -75,7 +83,7 @@ namespace WindowsFormsApp6
                     while ((line = reader.ReadLine()) != null)
                     {
                         string[] lineArr = line.Split('\t');
-                        if (lineArr[0] == loginBox.Text)
+                        if (lineArr[0] == loginBox.Text.Trim().ToLower())
                         {
                             MessageBox.Show("Пользователь с таким логином уже существует!");
                             isExist = true;
@@ -100,7 +108,7 @@ namespace WindowsFormsApp6
                 nameBox.Text = "";
                 lastNameBox.Text = "";
                 
-                Login login = new Login();
+                Login login = Login.getInstance();
                 login.Left = this.Left; // задаём открываемой форме позицию слева равную позиции текущей формы
                 login.Top = this.Top; // задаём открываемой форме позицию сверху равную позиции текущей формы
                 login.Show(); // отображаем Form2
