@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data;
 using System.IO;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp6
 {
@@ -53,7 +55,6 @@ namespace WindowsFormsApp6
         {
             bool isExist = false;
             bool isDone = true;
-            string path = @"C:\Users\Asus\RiderProjects\test2\content.txt";
             if (loginBox.Text == "")
             {
                 MessageBox.Show("Enter login...");
@@ -74,45 +75,56 @@ namespace WindowsFormsApp6
                 MessageBox.Show("Enter last name...");
                 isDone = false;
             }
+            
+            DB db = new DB();
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
 
             if (isDone)
             {
-                using (StreamReader reader = new StreamReader(path))
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @l", db.getConnection());
+                command.Parameters.Add("@l", MySqlDbType.VarChar).Value = loginBox.Text.Trim().ToLower();
+
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0)
                 {
-                    string line = null;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        string[] lineArr = line.Split('\t');
-                        if (lineArr[0] == loginBox.Text.Trim().ToLower())
-                        {
-                            MessageBox.Show("Пользователь с таким логином уже существует!");
-                            isExist = true;
-                            break;
-                        }
-                    }
+                    MessageBox.Show("Пользователь с таким логином уже существует!");
+                    isExist = true;
                 }
             }
 
             if (!isExist && isDone)
             {
-                using (StreamWriter writer = new StreamWriter(path, true))
-                {
-                    writer.Write($"{loginBox.Text.Trim().ToLower()}\t");
-                    writer.Write($"{passBox.Text.Trim()}\t");
-                    writer.Write($"{nameBox.Text.Trim()}\t");
-                    writer.WriteLine($"{lastNameBox.Text.Trim()}");
-                }
-                MessageBox.Show("Регистрация прошла успешна!");
-                loginBox.Text = "";
-                passBox.Text = "";
-                nameBox.Text = "";
-                lastNameBox.Text = "";
+                MySqlCommand command = new MySqlCommand("INSERT INTO `users` (`login`, `password`, `name`, `last_name`) VALUES (@l, @p, @n, @ln)", db.getConnection());
+                command.Parameters.Add("@l", MySqlDbType.VarChar).Value = loginBox.Text.Trim().ToLower();
+                command.Parameters.Add("@p", MySqlDbType.VarChar).Value = passBox.Text.Trim();
+                command.Parameters.Add("@n", MySqlDbType.VarChar).Value = nameBox.Text.Trim();
+                command.Parameters.Add("@ln", MySqlDbType.VarChar).Value = lastNameBox.Text.Trim();
                 
-                Login login = Login.getInstance();
-                login.Left = this.Left; // задаём открываемой форме позицию слева равную позиции текущей формы
-                login.Top = this.Top; // задаём открываемой форме позицию сверху равную позиции текущей формы
-                login.Show(); // отображаем Form2
-                this.Hide(); // скрываем Form1 (this - текущая форма)
+                db.openConnection();
+
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Регистрация прошла успешна!");
+                    loginBox.Text = "";
+                    passBox.Text = "";
+                    nameBox.Text = "";
+                    lastNameBox.Text = "";
+                
+                    Login login = Login.getInstance();
+                    login.Left = this.Left; // задаём открываемой форме позицию слева равную позиции текущей формы
+                    login.Top = this.Top; // задаём открываемой форме позицию сверху равную позиции текущей формы
+                    login.Show(); // отображаем Form2
+                    this.Hide(); // скрываем Form1 (this - текущая форма)
+                }
+                else
+                {
+                    MessageBox.Show("Проблема с базой данных, попробуйте зарегистрироваться позже");
+                }
+                
+                db.closeConnection();
             }
         }
     }

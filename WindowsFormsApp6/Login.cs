@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data;
 using System.IO;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp6
 {
@@ -42,7 +44,6 @@ namespace WindowsFormsApp6
         {
             bool isExist = false;
             bool isDone = true;
-            string path = @"C:\Users\Asus\RiderProjects\test2\content.txt"; 
             if (loginBox.Text == "")
             {
                 MessageBox.Show("Enter login...");
@@ -56,31 +57,34 @@ namespace WindowsFormsApp6
 
             if (isDone)
             {
-                using (StreamReader reader = new StreamReader(path))
+                DB db = new DB();
+                DataTable table = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @l AND `password` = @p", db.getConnection());
+                command.Parameters.Add("@l", MySqlDbType.VarChar).Value = loginBox.Text.Trim().ToLower();
+                command.Parameters.Add("@p", MySqlDbType.VarChar).Value = passBox.Text.Trim();
+
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0)
                 {
-                    string line = null;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        string[] lineArr = line.Split('\t');
-                        if (lineArr[0] == loginBox.Text.Trim().ToLower() && lineArr[1] == passBox.Text.Trim())
-                        {
-                            Global.setName(lineArr[2]);
-                            Global.setLogin(lineArr[0]);
+                    Global.setName(table.Rows[0]["name"].ToString());
+                    Global.setLogin(table.Rows[0]["login"].ToString());
 
-                            isExist = true;
+                    isExist = true;
 
-                            loginBox.Text = "";
-                            passBox.Text = "";
+                    loginBox.Text = "";
+                    passBox.Text = "";
                             
-                            Form1 form1 = Form1.getInstance();
-                            form1.Left =
-                                this.Left; // задаём открываемой форме позицию слева равную позиции текущей формы
-                            form1.Top = this
-                                .Top; // задаём открываемой форме позицию сверху равную позиции текущей формы
-                            form1.Show(); // отображаем Form2
-                            this.Hide(); // скрываем Form1 (this - текущая форма)
-                        }
-                    }
+                    Form1 form1 = Form1.getInstance();
+                    form1.Left =
+                        this.Left; // задаём открываемой форме позицию слева равную позиции текущей формы
+                    form1.Top = this
+                        .Top; // задаём открываемой форме позицию сверху равную позиции текущей формы
+                    form1.Show(); // отображаем Form2
+                    this.Hide(); // скрываем Form1 (this - текущая форма)
                 }
             }
 
